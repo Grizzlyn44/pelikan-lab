@@ -14,29 +14,33 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main + " con-fluid"}>
-        <h1 className={styles.title}>Pelikan LAB</h1>
+      <main className={styles.main}>
+        <div className="con-fluid">
+          <h1 className={styles.title}>Pelikan LAB</h1>
 
-        <p className={styles.description}>
-          Definetly not <code className={styles.code}>tech</code>
-        </p>
+          <p className={styles.description}>
+            Definetly not <code className={styles.code}>tech</code>
+          </p>
 
-        <ShineCard />
+          <ShineCard />
+        </div>
         <Waves />
       </main>
 
-      <footer className={styles.footer + " con-fluid"}>
-        <a href="#" target="_blank" rel="noopener noreferrer">
-          <span>Powered by </span>
-          <span className={styles.logo}>
-            <Image
-              src="/favicon.ico"
-              alt="Vercel Logo"
-              width={24}
-              height={24}
-            />
-          </span>
-        </a>
+      <footer className={styles.footer}>
+        <div className="con-fluid">
+          <a href="#" target="_blank" rel="noopener noreferrer">
+            <span>Powered by </span>
+            <span className={styles.logo}>
+              <Image
+                src="/favicon.ico"
+                alt="Vercel Logo"
+                width={24}
+                height={24}
+              />
+            </span>
+          </a>
+        </div>
       </footer>
     </div>
   );
