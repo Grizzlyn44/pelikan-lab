@@ -1,6 +1,7 @@
 .card {
   width: 71.5vw;
   height: 100vw;
+  pointer-events: none;
   // width: clamp(200px, 61vh, 18vw);
   // height: clamp(280px, 85vh, 25.2vw);
   @media screen and (min-width: 600px) {
