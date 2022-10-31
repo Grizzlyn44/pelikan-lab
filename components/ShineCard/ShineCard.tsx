@@ -1,5 +1,9 @@
 import { CSSProperties, useRef, useState } from "react";
 
+interface IProps {
+  cover: string;
+}
+
 // const onMouseOutHandler = () => { //mouseout touchend touchcancel
 //     // remove css, apply custom animation on end
 //     var $card = $(this);
@@ -67,12 +71,10 @@ const onMouseMoveHandler = (e: any, setRotate: any, cardRef: any) => {
   // clearTimeout(x);
 };
 
-const ShineCard = () => {
+const ShineCard = (props: IProps) => {
+  const { cover } = props;
   const [rotate, setRotate] = useState<any>(null);
   const cardRef = useRef(null);
-
-  const cover =
-    "https://images.genius.com/6f06d8e78543c9c7489607698f58bdaa.1000x1000x1.jpg";
 
   const styles: CSSProperties | any = {
     backgroundImage: `url(${cover})`,

@@ -5,6 +5,25 @@ import Waves from "components/Waves/Waves";
 import styles from "../styles/Home.module.css";
 import ShineCard from "components/ShineCard/ShineCard";
 
+const cards = [
+  {
+    cover:
+      "https://images.genius.com/29fea474b787594489eb68442aae7db2.1000x1000x1.jpg",
+  },
+  {
+    cover:
+      "https://images.genius.com/6f06d8e78543c9c7489607698f58bdaa.1000x1000x1.jpg",
+  },
+  {
+    cover:
+      "https://www.zrce.cz/wp-content/uploads/2021/12/viktor-sheen-1920x1050.jpg",
+  },
+];
+
+const generateCards = () => {
+  return cards?.map((card) => <ShineCard cover={card.cover} />);
+};
+
 export default function Home() {
   return (
     <div className={styles.container}>
@@ -21,8 +40,7 @@ export default function Home() {
           <p className={styles.description}>
             Definetly not <code className={styles.code}>tech</code>
           </p>
-
-          <ShineCard />
+          <div className="cards-grid">{generateCards()}</div>
         </div>
         <Waves />
       </main>

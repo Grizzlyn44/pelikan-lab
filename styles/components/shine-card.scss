@@ -1,3 +1,15 @@
+.cards-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4rem;
+  @media screen and (min-width: 600px) {
+    flex-direction: row;
+    margin-bottom: 0;
+  }
+}
+
 .card {
   width: 61.5vw;
   height: 90vw;
