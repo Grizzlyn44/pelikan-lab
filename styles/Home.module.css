@@ -1,5 +1,4 @@
 .container {
-  padding: 0 2rem;
 }
 
 .main {
@@ -15,10 +14,12 @@
 .footer {
   display: flex;
   flex: 1;
-  padding: 2rem 0;
-  border-top: 1px solid #222;
+  /* border-top: 1px solid #222; */
   justify-content: center;
   align-items: center;
+  background: #fff;
+  color: #000;
+  font-weight: normal;
 }
 
 .footer a {
@@ -26,6 +27,7 @@
   justify-content: center;
   align-items: center;
   flex-grow: 1;
+  padding: 2rem 0;
 }
 
 .title a {
@@ -105,11 +107,7 @@
 
 .logo {
   height: auto;
-  margin-left: 0.5rem;
-}
-
-.logo img {
-  filter: invert(1);
+  margin-left: 0.75rem;
 }
 
 @media (max-width: 600px) {

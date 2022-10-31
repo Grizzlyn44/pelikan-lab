@@ -1,6 +1,9 @@
 import Head from "next/head";
 import Image from "next/image";
+import Waves from "components/Waves/Waves";
+
 import styles from "../styles/Home.module.css";
+import ShineCard from "components/ShineCard/ShineCard";
 
 export default function Home() {
   return (
@@ -11,15 +14,18 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
+      <main className={styles.main + " con-fluid"}>
         <h1 className={styles.title}>Pelikan LAB</h1>
 
         <p className={styles.description}>
           Definetly not <code className={styles.code}>tech</code>
         </p>
+
+        <ShineCard />
+        <Waves />
       </main>
 
-      <footer className={styles.footer}>
+      <footer className={styles.footer + " con-fluid"}>
         <a href="#" target="_blank" rel="noopener noreferrer">
           <span>Powered by </span>
           <span className={styles.logo}>
