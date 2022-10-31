@@ -71,7 +71,8 @@ const ShineCard = () => {
   const [rotate, setRotate] = useState<any>(null);
   const cardRef = useRef(null);
 
-  const cover = "http://freshspace.cz/wp-content/uploads/2015/04/LOGIC.jpg";
+  const cover =
+    "https://images.genius.com/6f06d8e78543c9c7489607698f58bdaa.1000x1000x1.jpg";
 
   const styles: CSSProperties | any = {
     backgroundImage: `url(${cover})`,

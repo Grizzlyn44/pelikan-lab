@@ -2,6 +2,7 @@
   width: 61.5vw;
   height: 90vw;
   pointer-events: none;
+  margin: 0 auto;
   // width: clamp(200px, 61vh, 18vw);
   // height: clamp(280px, 85vh, 25.2vw);
   @media screen and (min-width: 600px) {
@@ -9,14 +10,16 @@
     // height: 85vh;
     // max-width: 500px;
     // max-height: 700px;
-    margin: 0 auto;
     width: clamp(12.9vw, 61vh, 18vw);
     height: clamp(18vw, 85vh, 25.2vw);
   }
 
+  @media (min-width: 600px) {
+    margin: auto;
+  }
+
   position: relative;
   overflow: hidden;
-  margin: 20px;
   overflow: hidden;
   z-index: 10;
   touch-action: none;
