@@ -1,5 +1,9 @@
 @import "./components//shine-card.scss";
 
+.__next {
+  overflow: hidden;
+}
+
 .con-fluid {
   max-width: 1200px;
   margin: 0 auto;

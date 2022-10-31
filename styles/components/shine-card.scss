@@ -1,6 +1,6 @@
 .card {
-  width: 71.5vw;
-  height: 100vw;
+  width: 61.5vw;
+  height: 90vw;
   pointer-events: none;
   // width: clamp(200px, 61vh, 18vw);
   // height: clamp(280px, 85vh, 25.2vw);
@@ -9,6 +9,7 @@
     // height: 85vh;
     // max-width: 500px;
     // max-height: 700px;
+    margin: 0 auto;
     width: clamp(12.9vw, 61vh, 18vw);
     height: clamp(18vw, 85vh, 25.2vw);
   }
