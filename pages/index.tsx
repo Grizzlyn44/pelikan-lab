@@ -21,7 +21,9 @@ const cards = [
 ];
 
 const generateCards = () => {
-  return cards?.map((card) => <ShineCard cover={card.cover} />);
+  return cards?.map((card, index) => (
+    <ShineCard key={`card-${index}`} cover={card.cover} />
+  ));
 };
 
 export default function Home() {
