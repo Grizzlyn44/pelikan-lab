@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { resolve } from "node:path/win32";
 import { IWallet } from "mongoose/models/Wallet";
 import { IResponseWalletMeGet } from "pages/api/wallet";
+import Link from "next/link";
 
 interface IProps {
   session?: Session | null;
@@ -28,20 +29,20 @@ const Header = (props: IProps) => {
 
   const loggedInContent = (
     <>
-      <a href="/" className="nickname">
+      <Link href="/" className="nickname">
         {session?.user?.name}
-      </a>
-      <a href="/" className="currency">
+      </Link>
+      <Link href="/" className="currency">
         <span>{wallet?.currency?.toLocaleString()} $</span>
-      </a>
-      <a href="/" onClick={() => signOut()}>
+      </Link>
+      <Link href="/" onClick={() => signOut()}>
         Log out
-      </a>
+      </Link>
     </>
   );
   const loggedOutContent = (
     <>
-      <a
+      <Link
         href="/"
         onClick={(e) => {
           e.preventDefault();
@@ -49,7 +50,7 @@ const Header = (props: IProps) => {
         }}
       >
         Log in
-      </a>
+      </Link>
     </>
   );
 
@@ -57,9 +58,9 @@ const Header = (props: IProps) => {
     <header className="header-main">
       <div className="con-fluid">
         <div className="h-l">
-          <a href="#" className="logo">
+          <Link href="#" className="logo">
             Pelikan LAB
-          </a>
+          </Link>
         </div>
         <div className="h-r">
           {isLoggedIn ? loggedInContent : loggedOutContent}
