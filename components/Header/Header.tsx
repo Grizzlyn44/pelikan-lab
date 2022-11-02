@@ -11,7 +11,7 @@ interface IProps {
 const Header = (props: IProps) => {
   const { session, wallet } = props;
 
-  if (!session || !wallet) return null;
+  // if (!session || !wallet) return null;
 
   // useEffect(() => {
   //   if (sessionData?.status === "authenticated" && false) {
