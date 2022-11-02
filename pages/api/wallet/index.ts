@@ -21,8 +21,6 @@ const wallet = async (
   req: NextApiRequest,
   res: NextApiResponse<ReponseType>
 ) => {
-  const method = req.method;
-
   try {
     switch (req.method) {
       case "GET":

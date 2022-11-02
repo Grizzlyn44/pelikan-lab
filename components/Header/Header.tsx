@@ -1,33 +1,31 @@
 import { Session } from "next-auth";
-import { signIn, signOut, useSession } from "next-auth/react";
-import GoogleProvider from "next-auth/providers/google";
-import { useEffect, useState } from "react";
-import { resolve } from "node:path/win32";
+import { signIn, signOut } from "next-auth/react";
 import { IWallet } from "mongoose/models/Wallet";
-import { IResponseWalletMeGet } from "pages/api/wallet";
 import Link from "next/link";
 
 interface IProps {
-  session?: Session | null;
+  session: Session | null;
+  wallet: IWallet | null;
 }
 
 const Header = (props: IProps) => {
-  const { data: session } = useSession();
-  const [wallet, setWallet] = useState<IWallet>();
+  const { session, wallet } = props;
 
-  useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/wallet`).then(
-      async (e: Response) => {
-        const jsonValue: IResponseWalletMeGet = await e.json();
-        const value = jsonValue?.data;
-        setWallet(value);
-      }
-    );
-  }, []);
+  if (!session || !wallet) return null;
+
+  // useEffect(() => {
+  //   if (sessionData?.status === "authenticated" && false) {
+  //     fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/wallet`).then(
+  //       async (e: Response) => {
+  //         const jsonValue: IResponseWalletMeGet = await e.json();
+  //         const value = jsonValue?.data;
+  //         setWallet(value);
+  //       }
+  //     );
+  //   }
+  // }, [session]);
 
   const isLoggedIn = session;
-
-  // console.log("session", session);
 
   const loggedInContent = (
     <>

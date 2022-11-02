@@ -5,9 +5,13 @@ import Waves from "components/Waves/Waves";
 import styles from "../styles/Home.module.css";
 
 import ShineCard from "components/ShineCard/ShineCard";
-import { signIn, useSession } from "next-auth/react";
+import { getSession, signIn, useSession } from "next-auth/react";
 import Header from "components/Header/Header";
 import Link from "next/link";
+import { Session } from "next-auth";
+import { GetServerSideProps } from "next/types";
+import { IWallet } from "mongoose/models/Wallet";
+import { getToken } from "next-auth/jwt";
 
 const cards = [
   {
@@ -36,8 +40,14 @@ const generateCards = () => {
   ));
 };
 
-export default function Home() {
-  // const { data: session } = useSession();
+interface IProps {
+  session: Session | null;
+  wallet: IWallet | null;
+}
+
+export default function Home(props: IProps) {
+  // console.log("props", props);
+  const { session, wallet } = props;
 
   return (
     <div className="p-home">
@@ -47,7 +57,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header /*session={session} */ />
+      <Header session={session} wallet={wallet} />
 
       <main className="main">
         <div className="con-fluid">
@@ -90,3 +100,29 @@ export default function Home() {
     </div>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async ({
+  req,
+}): Promise<{ props: IProps }> => {
+  const session = await getSession({ req });
+
+  const wallet = !session
+    ? null
+    : await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/wallet`, {
+        headers: {
+          cookie: req.headers.cookie as any,
+        },
+      })
+        .then(async (e) => {
+          const dataJson = await e.json();
+          const data = dataJson.data;
+          return data;
+        })
+        .catch((e) => {
+          return null;
+        });
+
+  return {
+    props: { session, wallet },
+  };
+};
