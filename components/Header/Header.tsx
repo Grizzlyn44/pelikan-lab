@@ -48,7 +48,9 @@ const Header = (props: IProps) => {
         href="/"
         onClick={(e) => {
           e.preventDefault();
-          signIn("google");
+          signIn("google", {
+            callbackUrl: process.env.NEXT_PUBLIC_BASE_URL,
+          });
         }}
       >
         Log in
