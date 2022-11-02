@@ -7,6 +7,7 @@ import styles from "../styles/Home.module.css";
 import ShineCard from "components/ShineCard/ShineCard";
 import { signIn, useSession } from "next-auth/react";
 import Header from "components/Header/Header";
+import Link from "next/link";
 
 const cards = [
   {
@@ -65,7 +66,7 @@ export default function Home() {
 
       <footer className={styles.footer}>
         <div className="con-fluid">
-          <a href="/" rel="noopener noreferrer">
+          <Link href="/" rel="noopener noreferrer">
             <span>Powered by </span>
             <span className={styles.logo}>
               <Image
@@ -75,13 +76,13 @@ export default function Home() {
                 height={24}
               />
             </span>
-          </a>
+          </Link>
           <div className="disclaimer">
             <span className="heading">Disclaimer</span>
             <p>
               The version of this site is only a closed beta version. No real
-              currency flow even tho you can <a href="/">donate</a> me. For
-              scientific purposes only.
+              currency flow even tho you can <Link href="/">donate</Link> me.
+              For scientific purposes only.
             </p>
           </div>
         </div>
