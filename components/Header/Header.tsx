@@ -16,11 +16,13 @@ const Header = (props: IProps) => {
   const [wallet, setWallet] = useState<IWallet>();
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/wallet").then(async (e: Response) => {
-      const jsonValue: IResponseWalletMeGet = await e.json();
-      const value = jsonValue?.data;
-      setWallet(value);
-    });
+    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/wallet`).then(
+      async (e: Response) => {
+        const jsonValue: IResponseWalletMeGet = await e.json();
+        const value = jsonValue?.data;
+        setWallet(value);
+      }
+    );
   }, []);
 
   const isLoggedIn = session;
