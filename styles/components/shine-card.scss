@@ -1,19 +1,8 @@
-.cards-grid {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 4rem;
-  @media screen and (min-width: 600px) {
-    flex-direction: row;
-    margin-bottom: 0;
-  }
-}
-
 .card {
   width: 61.5vw;
   height: 90vw;
-  pointer-events: none;
+  cursor: pointer;
+  // pointer-events: none;
   margin: 0 auto;
   // width: clamp(200px, 61vh, 18vw);
   // height: clamp(280px, 85vh, 25.2vw);
@@ -27,7 +16,7 @@
   }
 
   @media (min-width: 600px) {
-    margin: auto;
+    margin: 0;
   }
 
   position: relative;
@@ -37,9 +26,14 @@
   touch-action: none;
 
   border-radius: 5% / 3.5%;
-  box-shadow: -5px -5px 5px -5px var(--color1), 5px 5px 5px -5px var(--color2),
-    -7px -7px 10px -5px transparent, 7px 7px 10px -5px transparent,
-    0 0 5px 0px rgba(255, 255, 255, 0), 0 55px 35px -20px rgba(0, 0, 0, 0.5);
+  // box-shadow: -5px -5px 5px -5px var(--color1), 5px 5px 5px -5px var(--color2),
+  //   -7px -7px 10px -5px transparent, 7px 7px 10px -5px transparent,
+  //   0 0 5px 0px rgba(255, 255, 255, 0), 0 55px 35px -20px rgba(0, 0, 0, 0.5);
+
+  box-shadow: 0px 1px 6px 0px var(--colorShadow1),
+    0px 1px 2px 1px var(--colorShadow2), -7px -7px 10px -5px transparent,
+    7px 7px 10px -5px transparent, 0 0 5px 0px rgba(255, 255, 255, 0),
+    0 55px 35px -20px rgba(0, 0, 0, 0.5);
 
   transition: transform 0.5s ease, box-shadow 0.2s ease;
   will-change: transform, filter;
@@ -50,12 +44,16 @@
   background-repeat: no-repeat;
   background-position: 50% 50%;
   transform-origin: center;
+
+  transform: rotateX(0deg) rotateY(0deg);
+  transform: var(--transformVar);
 }
 
 .card:hover {
-  box-shadow: -20px -20px 30px -25px var(--color1),
-    20px 20px 30px -25px var(--color2), -7px -7px 10px -5px var(--color1),
-    7px 7px 10px -5px var(--color2), 0 0 13px 4px rgba(255, 255, 255, 0.3),
+  box-shadow: -20px -20px 30px -25px var(--colorShadow1),
+    20px 20px 30px -25px var(--colorShadow2),
+    -7px -7px 10px -5px var(--colorShadow1),
+    7px 7px 10px -5px var(--colorShadow2), 0 0 13px 4px rgba(255, 255, 255, 0.3),
     0 55px 35px -20px rgba(0, 0, 0, 0.5);
 }
 
@@ -137,7 +135,7 @@
   );
   background-position: 50% 50%;
   background-size: 250% 250%;
-  opacity: 0.88;
+  opacity: 0.5;
   filter: brightness(0.66) contrast(1.33);
   transition: none;
 }
@@ -200,13 +198,13 @@
   100% {
     opacity: 0.5;
     background-position: 50% 50%;
-    filter: brightness(0.5) contrast(1);
+    filter: brightness(0.35) contrast(1);
   }
   5%,
   9% {
     background-position: 100% 100%;
     opacity: 1;
-    filter: brightness(0.75) contrast(1.25);
+    filter: brightness(0.14) contrast(1.25);
   }
   13%,
   17% {
@@ -217,12 +215,12 @@
   39% {
     background-position: 100% 100%;
     opacity: 1;
-    filter: brightness(0.5) contrast(1);
+    filter: brightness(0.35) contrast(1);
   }
   55% {
     background-position: 0% 0%;
     opacity: 1;
-    filter: brightness(0.75) contrast(1.25);
+    filter: brightness(0.45) contrast(1.25);
   }
 }
 
@@ -248,125 +246,39 @@
   }
 }
 
-.card.eevee:hover {
-  box-shadow: 0 0 30px -5px white, 0 0 10px -2px white,
-    0 55px 35px -20px rgba(0, 0, 0, 0.5);
-}
-.card.eevee:hover:before,
-.card.eevee.active:before {
-  background-image: linear-gradient(
-    115deg,
-    transparent 20%,
-    var(--color1) 36%,
-    var(--color2) 43%,
-    var(--color3) 50%,
-    var(--color4) 57%,
-    var(--color5) 64%,
-    transparent 80%
-  );
-}
-
-.demo .card {
-  background-image: var(--back);
-  font-size: 2vh;
-}
-.demo .card > span {
-  position: relative;
-  top: 45%;
-}
-
-.demo .card:nth-of-type(1),
-.demo .card:nth-of-type(2),
-.demo .card:nth-of-type(3) {
-  width: 20vh;
-  height: 27.5vh;
-  box-shadow: inset 0 0 0 1px rgba(white, 0.4),
-    0 25px 15px -10px rgba(0, 0, 0, 0.5);
-  animation: none;
-}
-
-.demo .card:nth-of-type(1),
-.demo .card:nth-of-type(2),
-.demo .card:nth-of-type(3) {
-  &:before,
-  &:after {
-    animation: none;
-    // opacity: 1;
-  }
-}
-.demo .card:nth-of-type(1) {
-  &:before,
-  &:after {
-    display: none;
-  }
-}
-.demo .card:nth-of-type(2) {
-  background: none;
-  &:before {
-    display: none;
-  }
-}
-.demo .card:nth-of-type(3) {
-  background: none;
-  &:after {
-    display: none;
-  }
-}
-
-.operator {
-  display: inline-block;
-  vertical-align: middle;
-  font-size: 6vh;
-}
-
-html,
-body {
-  transform: translate3d(0, 0, 0.1px);
-}
-
-.demo,
-.cards {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  perspective: 2000px;
-  position: relative;
-  z-index: 1;
-  transform: translate3d(0.1px, 0.1px, 0.1px);
-}
-
-.demo {
-  flex-direction: row;
-  justify-content: center;
-}
-
-@media screen and (min-width: 600px) {
-  .cards {
-    flex-direction: row;
-  }
-}
-
-.cards .card {
-  &:nth-child(2) {
+.cards-grid .card {
+  &:nth-child(1) {
     &,
     &:before,
     &:after {
       animation-delay: 0.25s;
     }
   }
-  &:nth-child(3) {
+  &:nth-child(2) {
     &,
     &:before,
     &:after {
       animation-delay: 0.5s;
     }
   }
-  &:nth-child(4) {
+  &:nth-child(3) {
     &,
     &:before,
     &:after {
       animation-delay: 0.75s;
+    }
+  }
+}
+
+.card {
+  &:hover {
+    &:before {
+      background-position: var(--gradientPositionVar);
+    }
+    &:after {
+      transition: none;
+      background-position: var(--sparkPositionVar);
+      opacity: var(--opacityVar);
     }
   }
 }

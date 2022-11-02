@@ -1,0 +1,117 @@
+.header-main {
+  position: sticky;
+  top: 0;
+  left: 0;
+  height: 4rem;
+  //   background: red;
+  width: 100%;
+  border-bottom: 1px solid rgba(#fff, 0.5);
+  z-index: 99;
+  font-size: 0.75rem;
+  backdrop-filter: blur(10px);
+
+  .con-fluid {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  a {
+    padding: 0 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    transition: all 0.15s ease-in-out;
+    font-weight: 400;
+    &.nickname {
+      color: var(--colorHover);
+      font-weight: 700;
+    }
+    &.currency {
+      font-weight: 600;
+      &:hover {
+        span {
+          transform: scale(1.5);
+
+          box-shadow: 0px 0px 2px 0px rgba(#66ffde, 1);
+        }
+      }
+      span {
+        top: 0;
+        transform: scale(1);
+        position: relative;
+        background: #66ffde;
+        padding: 0.2rem 0.5rem;
+        color: #000;
+        border-radius: 0.25rem;
+        line-height: 1rem;
+        transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+        z-index: 0;
+
+        // backface-visibility: hidden;
+        // transform: translateZ(0);
+        // -webkit-font-smoothing: subpixel-antialiased;
+        // will-change: transform;
+
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.01);
+        box-shadow: 0px 0px 4px 0px rgba(#66ffde, 1);
+
+        &:after {
+          display: none;
+          position: absolute;
+          content: "";
+          bottom: 0px;
+          left: -4px;
+          right: 0;
+          z-index: -1;
+          height: 10px;
+          width: calc(100% + 8px);
+          transform: scale(1) translateZ(0);
+          filter: blur(6px);
+          opacity: 0.5;
+          background: linear-gradient(
+            to left,
+            #40debc,
+            #08fc72,
+            #00ff77,
+            #11997c,
+            #66ffde,
+            #11997c,
+            #00ff77,
+            #08fc72,
+            #40debc
+          );
+
+          background-size: 200% 200%;
+          animation: animateGlow 1.25s linear infinite;
+        }
+      }
+    }
+
+    &:hover {
+      color: var(--colorHover);
+    }
+  }
+
+  .h-l,
+  .h-r {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo {
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+
+  @keyframes animateGlow {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 200% 50%;
+    }
+  }
+}

@@ -1,4 +1,6 @@
-@import "./components//shine-card.scss";
+@import "./components/shine-card.scss";
+@import "./components/header.scss";
+@import "./pages/home.scss";
 
 .__next {
   overflow: hidden;
@@ -66,4 +68,100 @@
     height: 5rem;
     // min-height: 10vh;
   }
+}
+
+.show-more-btn {
+  display: flex;
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9;
+
+  &:hover {
+    .button-27 {
+      box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+      bottom: 0.5rem;
+      background: var(--colorHover);
+      color: #000;
+      border-color: var(--colorHover);
+    }
+  }
+
+  &:active {
+    .button-27 {
+      box-shadow: none;
+      left: 5rem;
+    }
+  }
+}
+
+.button-27 {
+  backdrop-filter: blur(2px);
+  background: rgba(#fff, 0.2);
+  appearance: none;
+  border: 2px solid #0f0f0f;
+  border-radius: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: normal;
+  margin: 0;
+  min-width: 0;
+  outline: none;
+  padding: 1rem 4rem;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  will-change: transform;
+  bottom: 0;
+  position: relative;
+  left: 0;
+  // bottom: 1rem;
+  // left: 50%;
+  // transform: translateX(-50%);
+  z-index: 9;
+  color: #0f0f0f;
+  // background: none;
+  font-weight: 700;
+  font-size: 0.75rem;
+  cursor: pointer;
+  margin: 0;
+}
+
+.button-27:disabled {
+  pointer-events: none;
+}
+
+// .button-27:hover {
+//   box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+//   bottom: 1.5rem;
+//   background: var(--colorHover);
+//   color: #000;
+//   border-color: var(--colorHover);
+// }
+
+// .button-27:active {
+//   box-shadow: none;
+//   transform: translateY(0);
+// }
+
+/* colors */
+
+$colorHover: #66ffde;
+$colorNiceBlack: #0f0f0f;
+
+:root {
+  --colorHover: #{$colorHover};
+  --selectionBackground: #{$colorHover};
+  --selectionColor: #{$colorNiceBlack};
+}
+
+::selection {
+  background: var(--selectionBackground);
+  color: var(--selectionColor);
 }
