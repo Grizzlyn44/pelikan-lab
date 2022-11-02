@@ -24,7 +24,7 @@ const Header = (props: IProps) => {
 
   const isLoggedIn = session;
 
-  console.log("session", session);
+  // console.log("session", session);
 
   const loggedInContent = (
     <>
