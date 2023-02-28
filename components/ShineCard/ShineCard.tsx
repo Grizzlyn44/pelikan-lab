@@ -1,4 +1,5 @@
 import { CSSProperties, useRef, useState } from "react";
+import Image from "next/image";
 
 interface IProps {
   cover: string;
@@ -100,14 +101,16 @@ const ShineCard = (props: IProps) => {
   };
 
   return (
-    <div
-      className="card animated"
-      style={styles}
-      ref={cardRef}
-      onMouseMove={(e) => onMouseMoveHandler(e)}
-      onTouchMove={(e) => onMouseMoveHandler(e)}
-      onMouseOut={(e) => onMouseOutHandler(e)}
-    />
+    <>
+      <div
+        className="card animated"
+        style={styles}
+        ref={cardRef}
+        onMouseMove={(e) => onMouseMoveHandler(e)}
+        onTouchMove={(e) => onMouseMoveHandler(e)}
+        onMouseOut={(e) => onMouseOutHandler(e)}
+      />
+    </>
   );
 };
 

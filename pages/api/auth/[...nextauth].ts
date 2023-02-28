@@ -26,25 +26,25 @@ export default NextAuth({
 
       const userWallet: IWallet = {
         ownerId: userData.user.id,
-        currency: 0,
+        amount: 0,
       };
 
       const createdWallet = await Wallet.create(userWallet);
 
-      const initialTransaction: ITransaction = {
-        type: 1,
-        from: "SYSTEM",
-        to: createdWallet._id,
-        quantity: 5000,
-      };
+      // const initialTransaction: ITransaction = {
+      //   type: 1,
+      //   from: "SYSTEM",
+      //   to: createdWallet._id,
+      //   quantity: 5000,
+      // };
 
-      await Transaction.create(initialTransaction);
+      // await Transaction.create(initialTransaction);
 
-      await Wallet.findOneAndUpdate(
-        { _id: createdWallet._id },
-        { $set: { currency: 5000 } },
-        { new: true }
-      );
+      // await Wallet.findOneAndUpdate(
+      //   { _id: createdWallet._id },
+      //   { $set: { currency: 5000 } },
+      //   { new: true }
+      // );
     },
   },
   callbacks: {

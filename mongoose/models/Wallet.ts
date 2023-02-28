@@ -4,12 +4,13 @@ export interface IWalletDB extends IWallet, Document {}
 
 export interface IWallet {
   ownerId: String;
-  currency: Number;
+  amount: number;
+  error?: any; //@TODO error type
 }
 
 const walletSchema: Schema = new Schema({
   ownerId: String,
-  currency: Number,
+  amount: Number,
 });
 
 const Wallet: Model<IWalletDB> = models.Wallet || model("Wallet", walletSchema);

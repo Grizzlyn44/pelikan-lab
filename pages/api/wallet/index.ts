@@ -39,7 +39,11 @@ const getHandler = async (
   req: NextApiRequest,
   res: NextApiResponse<IResponseWalletMeGet>
 ) => {
-  const session = await getSession({ req });
+  const session = await getSession({ req }).catch((e) => null);
+
+  if (session === null) {
+    return res.status(401).json({ message: "Not Authorized" });
+  }
 
   const userId: string = (session as any)?.userId;
 

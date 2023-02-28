@@ -1,0 +1,29 @@
+$paddingTop: 2rem;
+
+.__next {
+  overflow: hidden;
+}
+
+.con-fluid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 3rem;
+  position: relative;
+}
+
+.page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+
+  .main {
+    flex: 1 0 auto;
+    margin-top: calc(var(--menuHeight) * -1);
+    padding-top: calc(var(--menuHeight) + 3rem);
+
+    .con-fluid {
+      height: 100%;
+    }
+  }
+}

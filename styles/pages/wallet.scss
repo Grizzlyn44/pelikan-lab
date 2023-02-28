@@ -1,0 +1,189 @@
+.p-wallet {
+  .balance-view {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .money {
+      font-size: 5rem;
+      font-weight: 700;
+      color: var(--green);
+      text-shadow: 0px 0px 15px rgba(#66ffde, 0.45);
+
+      .currency {
+        margin-left: 1.5rem;
+      }
+    }
+  }
+
+  .transactions {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+
+    .no-transactions {
+      margin-top: 2rem;
+      font-weight: 400;
+      font-size: 0.75rem;
+      color: #747474;
+    }
+
+    .container {
+      width: 100%;
+    }
+
+    .transaction {
+      background: #00362b;
+      height: 4rem;
+      max-width: 25rem;
+      border-radius: 0.35rem;
+      margin: 0 auto;
+      cursor: pointer;
+      transition: background 0.3s ease-in-out, transform 0.05s ease-in-out;
+      margin-bottom: 0.25rem;
+      position: relative;
+      transform: scale(1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem;
+      overflow: hidden;
+
+      .type {
+        background: #00251e;
+        width: 2rem;
+        height: 2rem;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100%;
+        .add,
+        .remove {
+          border: solid #66ffde;
+          border-width: 0 0 3px 3px;
+          display: inline-block;
+          padding: 3px;
+        }
+        .remove {
+          border-color: #ff4040;
+          border-width: 3px 3px 0px 0px;
+        }
+      }
+
+      .info {
+        display: flex;
+        flex-direction: column;
+
+        .value {
+          line-height: 1;
+          font-size: 1rem;
+          margin-bottom: 1rem;
+          font-weight: 600;
+          letter-spacing: 2px;
+          color: var(--green);
+          //   transition: all 0.3s cubic-bezier(0.45, -1.59, 0.44, 2);
+          transition: all 0.35s ease-in-out;
+        }
+
+        .label {
+          line-height: 1;
+          font-weight: 600;
+          font-size: 0.5rem;
+          text-transform: uppercase;
+          letter-spacing: 3px;
+          color: #62726f;
+          transition: all 0.3s ease-in-out;
+        }
+
+        &.date {
+          transition: all 0.3s ease-in-out;
+          position: relative;
+          max-width: 0rem;
+          opacity: 0;
+          left: 5rem;
+          .value {
+            font-size: 0.65rem;
+            margin-bottom: 0.75rem !important;
+          }
+        }
+      }
+
+      &:hover {
+        background: #004f40;
+        transform: scale(1.15);
+
+        .info {
+          .value {
+            margin-bottom: 0.45rem;
+          }
+          .label {
+            color: #fff;
+            font-weight: 200;
+          }
+
+          &.date {
+            max-width: 10rem;
+            opacity: 1;
+            left: 0;
+          }
+        }
+      }
+    }
+  }
+
+  //   .balance-view {
+  //     display: flex;
+  //     justify-content: center;
+  //     align-items: center;
+  //     height: 100%;
+  //     .top {
+  //       display: flex;
+  //       flex-direction: column;
+  //       &:after {
+  //       }
+  //     }
+
+  //     .title {
+  //       text-align: center;
+  //       margin-bottom: -1rem;
+  //     }
+
+  //     .money {
+  //       font-size: 5rem;
+  //       font-weight: 700;
+  //       color: var(--green);
+  //       text-align: center;
+  //       margin-bottom: -4rem;
+  //       z-index: 99;
+  //       text-shadow: 0px 0px 15px rgb(0 0 0);
+  //       .value {
+  //         padding-right: 2rem;
+  //       }
+  //     }
+  //   }
+
+  //   svg {
+  //     * {
+  //       opacity: 0;
+  //     }
+
+  //     .apexcharts-tooltip.apexcharts-theme-light.apexcharts-active {
+  //       color: var(--black);
+  //     }
+
+  //     .apexcharts-inner.apexcharts-graphical {
+  //       opacity: 1;
+  //       .apexcharts-area-series.apexcharts-plot-series {
+  //         opacity: 1;
+  //         * {
+  //           opacity: 1;
+  //         }
+  //       }
+  //     }
+  //   }
+}

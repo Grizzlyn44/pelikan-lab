@@ -1,0 +1,112 @@
+.p-card-detail {
+  .container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 3.5rem;
+  }
+
+  .card-con {
+    flex: 1 0 calc(50% - 3.5rem);
+    // width: calc(50% - 2rem);
+    perspective: 3000px;
+    transform: translate3d(0, 0, 100px);
+    .card {
+      margin: 0 auto;
+      max-width: 19.65rem;
+      max-height: 27.5rem;
+      min-width: 14.45rem;
+      min-height: 20.5rem;
+    }
+  }
+
+  .info-con {
+    flex: 1 0 calc(50% - 3.5rem);
+    // width: calc(50% - 2rem);
+    .title {
+      margin-bottom: 2rem;
+    }
+    .description {
+      line-height: 1.5rem;
+      margin-bottom: 4rem;
+      font-style: italic;
+      font-size: 0.75rem;
+    }
+
+    .info-table {
+      margin-bottom: 2rem;
+      .info-row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.1rem;
+        .label {
+          font-size: 0.7rem;
+          color: #747474;
+          line-height: 1rem;
+          margin-right: 0.4rem;
+        }
+        .value {
+          line-height: 1rem;
+          font-size: 0.7rem;
+          a {
+            color: var(--green);
+            font-weight: 600;
+            &:hover {
+              color: var(--green);
+            }
+          }
+        }
+      }
+    }
+
+    .btn-buy {
+      backdrop-filter: blur(2px);
+      background: rgba(#fff, 0.2);
+      appearance: none;
+      border: 2px solid #0f0f0f;
+      border-radius: 0.5rem;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      display: flex;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: normal;
+      margin: 0;
+      min-width: 0;
+      outline: none;
+      padding: 1rem 4rem;
+      transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      will-change: transform;
+      bottom: 0;
+      position: relative;
+      left: 0;
+      z-index: 9;
+      color: #0f0f0f;
+      font-weight: 700;
+      font-size: 0.75rem;
+      cursor: pointer;
+      margin: 0;
+      background: var(--green);
+      transition: all 0.3s ease-in-out;
+
+      .text {
+        // display: flex;
+        margin-right: 0.25rem;
+      }
+
+      .price {
+        // display: flex;
+        font-weight: 600;
+      }
+
+      &:hover {
+        background: var(--white);
+        // color: var(--black);
+      }
+    }
+  }
+}

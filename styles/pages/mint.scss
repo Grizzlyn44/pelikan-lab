@@ -1,0 +1,51 @@
+.p-mint {
+  .mint-view {
+    .container {
+      flex: 1 0 50%;
+      margin: 0 auto;
+    }
+
+    .input {
+      margin-bottom: 1rem;
+    }
+
+    .input-source {
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .ant-switch-checked {
+        background: var(--green);
+        span {
+          color: var(--black);
+        }
+      }
+
+      .inner-container__left {
+        flex: 1 0 auto;
+        padding-right: 1rem;
+      }
+
+      .input {
+        margin-bottom: 0;
+        flex: 1 0 100%;
+      }
+    }
+
+    .outter {
+      display: flex;
+      flex-direction: row;
+      position: relative;
+      width: 100%;
+      .card-container {
+        flex: 1 0 50%;
+      }
+      .card {
+        margin: 0 auto;
+        width: 61.5vw;
+        height: 90vw;
+      }
+    }
+  }
+}

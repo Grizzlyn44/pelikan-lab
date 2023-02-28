@@ -1,17 +1,84 @@
 @import "./components/shine-card.scss";
+
 @import "./components/header.scss";
+@import "./components/footer.scss";
+@import "./components/layout.scss";
+
+/* pages */
 @import "./pages/home.scss";
+@import "./pages/wallet.scss";
+@import "./pages/card-detail.scss";
+@import "./pages/mint.scss";
+/* pages */
+
+@import "./antd-rewrites-global.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* colors */
+$colorGreen: #66ffde;
+$colorNiceBlack: #080808;
+$colorWhite: #f5f5f5;
+
+$menuHeight: 4rem;
+
+:root {
+  --colorHover: #{$colorGreen};
+  --linkColor: #{$colorNiceBlack};
+  --selectionBackground: #{$colorGreen};
+  --selectionColor: #{$colorNiceBlack};
+  --black: #{$colorNiceBlack};
+  --white: #{$colorWhite};
+  --green: #{$colorGreen};
+  --menuHeight: #{$menuHeight};
+}
+
+::selection {
+  background: var(--selectionBackground);
+  color: var(--selectionColor);
+}
+
+/* colors */
+
+/* tpyoef reset */
+
+html,
+body {
+  background: var(--black);
+  color: var(--white);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--white);
+}
+
+a {
+  color: var(--linkColor);
+  &:hover {
+    color: var(--colorHover);
+  }
+}
+
+/* tpyoef reset */
 
 .__next {
   overflow: hidden;
 }
 
-.con-fluid {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 3rem;
-  position: relative;
-}
+// .con-fluid {
+//   max-width: 1200px;
+//   margin: 0 auto;
+//   padding: 0 3rem;
+//   position: relative;
+// }
 
 .waves-container {
   position: absolute;
@@ -71,12 +138,12 @@
 }
 
 .show-more-btn {
-  display: flex;
-  position: absolute;
-  bottom: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 9;
+  bottom: 1.5rem;
+  position: relative;
+  display: inline-flex;
+  transform: none;
+  left: 0;
+  align-self: center;
 
   &:hover {
     .button-27 {
@@ -121,12 +188,8 @@
   bottom: 0;
   position: relative;
   left: 0;
-  // bottom: 1rem;
-  // left: 50%;
-  // transform: translateX(-50%);
   z-index: 9;
   color: #0f0f0f;
-  // background: none;
   font-weight: 700;
   font-size: 0.75rem;
   cursor: pointer;
@@ -135,33 +198,4 @@
 
 .button-27:disabled {
   pointer-events: none;
-}
-
-// .button-27:hover {
-//   box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
-//   bottom: 1.5rem;
-//   background: var(--colorHover);
-//   color: #000;
-//   border-color: var(--colorHover);
-// }
-
-// .button-27:active {
-//   box-shadow: none;
-//   transform: translateY(0);
-// }
-
-/* colors */
-
-$colorHover: #66ffde;
-$colorNiceBlack: #0f0f0f;
-
-:root {
-  --colorHover: #{$colorHover};
-  --selectionBackground: #{$colorHover};
-  --selectionColor: #{$colorNiceBlack};
-}
-
-::selection {
-  background: var(--selectionBackground);
-  color: var(--selectionColor);
 }
