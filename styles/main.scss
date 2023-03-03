@@ -67,3 +67,38 @@
     // min-height: 10vh;
   }
 }
+
+.btn-pill {
+  /* border: 1px solid #e86647; */
+  border: 1px solid #fff;
+  border-radius: 5rem;
+  padding: 1rem 3rem;
+  font-size: 1.5rem;
+  display: inline-flex;
+  color: #ffffff;
+  transition: all 0.15s ease-in-out;
+  transform: scale(1);
+}
+
+.btn-pill:hover {
+  border: 1px solid #e86647;
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.compare-section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem 5rem;
+  letter-spacing: 2px;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 640px) {
+  .compare-section {
+    flex-direction: column;
+    gap: 4rem 0;
+  }
+}
