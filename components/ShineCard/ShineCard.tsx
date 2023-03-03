@@ -12,6 +12,12 @@ interface ICoordinates {
 
 const ShineCard = (props: IProps) => {
   const { cover } = props;
+
+  const myLoader = ({ src, width, quality }: any) => {
+    return `https://www.slntechnologies.com/wp-content/uploads/2017/08/ef3-placeholder-image.jpg`;
+    // return `${src}`;
+  };
+
   const [rotate, setRotate] = useState<ICoordinates>({ x: 0, y: 0 });
   const [gradientPosition, setGradientPosition] = useState<ICoordinates>({
     x: 0,
@@ -22,6 +28,8 @@ const ShineCard = (props: IProps) => {
     y: 0,
   });
   const [opacity, setOpacity] = useState<number>(1);
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
+
   const cardRef = useRef(null);
 
   const styleVariables = {
@@ -100,6 +108,8 @@ const ShineCard = (props: IProps) => {
     }, 2500);
   };
 
+  // if (!isLoaded) return <div>Loading...</div>;
+
   return (
     <>
       <div
@@ -109,7 +119,17 @@ const ShineCard = (props: IProps) => {
         onMouseMove={(e) => onMouseMoveHandler(e)}
         onTouchMove={(e) => onMouseMoveHandler(e)}
         onMouseOut={(e) => onMouseOutHandler(e)}
-      />
+      >
+        {/* <Image
+          // loader={myLoader}
+          // placeholder="blur"
+          onLoad={() => setIsLoaded(true)}
+          src={cover}
+          alt="Picture of the author"
+          width={500}
+          height={500}
+        /> */}
+      </div>
     </>
   );
 };

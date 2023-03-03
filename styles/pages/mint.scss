@@ -37,14 +37,23 @@
       display: flex;
       flex-direction: row;
       position: relative;
-      width: 100%;
+      max-width: 60rem;
+      margin-top: 4rem;
       .card-container {
         flex: 1 0 50%;
       }
       .card {
         margin: 0 auto;
-        width: 61.5vw;
-        height: 90vw;
+        max-width: 15rem;
+        width: 15rem;
+        height: 23rem;
+        // width: 61.5vw;
+        // height: 90vw;
+      }
+      .ant-btn {
+        width: 100%;
+        height: 3.5rem;
+        font-size: 1rem;
       }
     }
   }
