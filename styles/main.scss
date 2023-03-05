@@ -22,6 +22,7 @@
 $colorGreen: #66ffde;
 $colorNiceBlack: #080808;
 $colorWhite: #f5f5f5;
+$colorOrange: #e86647;
 
 $menuHeight: 4rem;
 
@@ -33,6 +34,7 @@ $menuHeight: 4rem;
   --black: #{$colorNiceBlack};
   --white: #{$colorWhite};
   --green: #{$colorGreen};
+  --orange: #{$colorOrange};
   --menuHeight: #{$menuHeight};
 }
 
@@ -203,7 +205,6 @@ a {
 }
 
 .btn-pill {
-  /* border: 1px solid #e86647; */
   border: 1px solid #fff;
   border-radius: 5rem;
   padding: 1rem 3rem;
@@ -220,7 +221,7 @@ a {
 
   &:hover {
     @media (hover: hover) and (pointer: fine) {
-      border: 1px solid #e86647;
+      border: 1px solid var(--orange);
       cursor: pointer;
       transform: scale(1.2);
     }
@@ -233,7 +234,7 @@ a {
     border-color: #fff;
   }
   10% {
-    border-color: #e86647;
+    border-color: var(--orange);
   }
   // 20% {
   //   transform: scale(1.05);
@@ -255,7 +256,7 @@ a {
 }
 
 .btn-pill.active {
-  border: 1px solid #e86647;
+  border: 1px solid var(--orange);
   cursor: pointer;
   transform: scale(1.2);
 }
@@ -316,7 +317,7 @@ $loaderHeight: $loaderWidth;
   position: absolute;
   inset: calc($loaderWidth / -4); /*-0.5rem;*/
   margin: auto;
-  background: #e86647;
+  background: var(--orange);
   animation: diamondLoader 2s ease-in-out infinite;
 }
 @keyframes diamondLoader {
@@ -385,14 +386,14 @@ $loaderHeight: $loaderWidth;
 
   span {
     font-weight: 600;
-    color: #e86647;
+    color: var(--orange);
   }
 }
 
 .winner-section {
   margin-top: 4rem;
   font-size: 0.75rem;
-  color: rgba(#e86647, 0.5);
+  color: rgba(var(--orange), 0.5);
   text-align: center;
 }
 
@@ -403,4 +404,40 @@ $loaderHeight: $loaderWidth;
   color: #3e3e3e;
   font-size: 0.75rem;
   font-weight: 600;
+}
+
+// html,
+// body {
+//   height: auto !important;
+//   min-height: 100vh;
+// }
+
+.p-report {
+  padding-top: 4rem;
+  .ld-s {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5rem 0;
+  }
+  .report-header {
+    font-weight: 600;
+    font-size: 2rem;
+    color: var(--orange);
+    text-align: center;
+  }
+  .report-body {
+  }
+  .total-reports {
+    .label {
+      margin-right: 0.5rem;
+    }
+    .value {
+      font-weight: 600;
+      color: var(--orange);
+    }
+  }
 }

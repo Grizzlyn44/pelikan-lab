@@ -15,10 +15,10 @@ interface IBaseResponse {
   stack?: any;
 }
 
-export interface IResponseBrandTrackingGet extends IBaseResponse {
-  isError?: boolean;
-  data: IBrandTrackingDb | IBrandTrackingDb[] | null;
-}
+// export interface IResponseBrandTrackingGet extends IBaseResponse {
+//   isError?: boolean;
+//   data: IBrandTrackingDb | IBrandTrackingDb[] | null;
+// }
 
 const cards = async (
   req: NextApiRequest,
@@ -32,8 +32,8 @@ const cards = async (
     switch (req.method) {
       case "POST":
         return await postHandler(req, res);
-      //   case "PUT":
-      //     return await putHandler(req, res);
+      case "GET":
+        return await getHandler(req, res);
       //   case "DELETE":
       //     return await deleteHandler(req, res);
       default:
@@ -71,4 +71,31 @@ const postHandler = async (
   const create = await BrandTracking.create(brandTracking);
 
   return res.status(200).send({ data: "OK", message: "OK" });
+};
+
+export interface IResponseBrandTrackingGet extends IBaseResponse {
+  data: Array<IVoteRecord>;
+}
+
+const getHandler = async (
+  req: NextApiRequest,
+  res: NextApiResponse<IResponseBrandTrackingGet>
+) => {
+  // const bodyJSON = JSON.parse(req.body);
+
+  // const { records, startTime, endTime, totalTime, userBrowserInfo } = bodyJSON;
+
+  // const brandTracking: IVoteRecord = {
+  //   records,
+  //   startTime,
+  //   endTime,
+  //   totalTime,
+  //   userBrowserInfo,
+  // };
+
+  await connect();
+
+  const data = await BrandTracking.find({}); // .create(brandTracking);
+
+  return res.status(200).send({ data, message: "OK" });
 };

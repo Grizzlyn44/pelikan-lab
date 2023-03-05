@@ -10,7 +10,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ant-design/charts": "^1.4.2",
     "@next-auth/mongodb-adapter": "^1.1.1",
+    "@nivo/bar": "^0.80.0",
+    "@nivo/core": "^0.80.0",
+    "@nivo/pie": "^0.80.0",
+    "ant-design": "^1.0.0",
     "antd": "^4.24.0",
     "apexcharts": "^3.36.0",
     "lodash": "^4.17.21",
@@ -18,6 +23,7 @@
     "mongoose": "^6.7.0",
     "next": "13.0.0",
     "next-auth": "^4.15.0",
+    "nivo": "^0.31.0",
     "react": "18.2.0",
     "react-apexcharts": "^1.4.0",
     "react-dom": "18.2.0",
