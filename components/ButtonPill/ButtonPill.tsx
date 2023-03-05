@@ -1,13 +1,21 @@
 interface IProps {
   text: string;
-  onClick?: () => void;
+  onClick?: (e: any) => void;
+  onMouseOver?: (e: any) => void;
+  onMouseOut?: (e: any) => void;
 }
 
 const ButtonPill = (props: IProps) => {
-  const { text, onClick } = props;
+  const { text, onClick, onMouseOver, onMouseOut } = props;
 
   return (
-    <div onClick={onClick && onClick} className="btn-pill">
+    <div
+      onClick={onClick && onClick}
+      onMouseOver={onMouseOver && onMouseOver}
+      onMouseOut={onMouseOut && onMouseOut}
+      // onTouchEnd={(e: any) => e.target.blur()}
+      className="btn-pill"
+    >
       {text}
     </div>
   );

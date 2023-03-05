@@ -6,72 +6,213 @@ interface IProps {
   brandData: Array<IBrandData>;
 }
 
-type CompareItemType = IBrandData | null;
+const VOTE_RECORD_BRAND_NAME_TYPE = "VOTE_RECORD_BRAND_NAME";
+
+type VoteRecordType = typeof VOTE_RECORD_BRAND_NAME_TYPE;
+
+interface IVoteBrandNameDataRecord {
+  stepIdleTime: number;
+  preferedBrandName: string;
+  toBrandName: string;
+  selected: string;
+  isInitialSelection: boolean;
+}
+
+interface IVoteBrandNameRecord {
+  type: VoteRecordType;
+  data: Array<IVoteBrandNameDataRecord>;
+}
+
+type VoteRecordSingletonType = IVoteBrandNameRecord;
+
+interface IVoteRecord {
+  records: VoteRecordSingletonType;
+  totalTime: number;
+}
+
+const shuffle = (array: Array<any>) => {
+  let currentIndex = array.length,
+    randomIndex;
+
+  // While there remain elements to shuffle.
+  while (currentIndex != 0) {
+    // Pick a remaining element.
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
+  }
+
+  return array;
+};
 
 const BrandNameCompare = (props: IProps) => {
-  //   const [bestBrandName, setBestBrandName] = React.useState<string | null>(null);
-  const [brandDataCopy, setBrandDataCopy] = useState<any>([...props.brandData]);
+  const newBrandData = shuffle([...props.brandData]);
 
-  const [compareItems, setCompareItems] = useState<Array<CompareItemType>>([
+  const [winner, setWinner] = useState<IBrandData>();
+
+  const [isSending, setIsSending] = useState<boolean>(false);
+
+  const [startDate] = useState<Date>(new Date());
+  const [endDate, setEndDate] = useState<Date>();
+  const [lastActionClick, setLastActionClick] = useState<Date>();
+
+  const [brandData, setBrandData] = useState<Array<IBrandData>>([
+    ...newBrandData,
+  ]);
+
+  const [compareItems, setCompareItems] = useState<Array<IBrandData | null>>([
     null,
     null,
   ]);
 
-  const { brandData } = props;
-
-  //   const brandDataCopy = [...brandData];
+  const [brandNameVoteRecods, setBrandNameVoteRecods] = useState<
+    Array<IVoteBrandNameDataRecord>
+  >([]);
 
   useEffect(() => {
-    console.log("first", brandDataCopy);
+    const newCompare = [brandData[0], brandData[1]];
+    const newBrandData = [...brandData];
 
-    const newCompare = [brandDataCopy[0], brandDataCopy[1]];
-    const newBrandDataCopy = [...brandDataCopy];
-
-    newBrandDataCopy.shift();
-    newBrandDataCopy.shift();
+    newBrandData.shift();
+    newBrandData.shift();
 
     setCompareItems(newCompare);
-    setBrandDataCopy(newBrandDataCopy);
+    setBrandData(newBrandData);
   }, []);
 
-  const handleCompareSelect = (index: number) => {
-    console.log("selected: ", index);
-    if (index === 0) {
-      const newCompare = [compareItems[0], brandDataCopy[0]];
-      const newBrandDataCopy = [...brandDataCopy];
+  useEffect(() => {
+    if (!!endDate) {
+      setIsSending(true);
+      const final: IVoteRecord = {
+        records: {
+          type: VOTE_RECORD_BRAND_NAME_TYPE,
+          data: brandNameVoteRecods,
+        },
+        totalTime: (endDate.getTime() - startDate.getTime()) / 1000,
+      };
 
-      newBrandDataCopy.shift();
+      console.log("end ... wrap", final);
+    }
+  }, [endDate]);
 
-      setCompareItems(newCompare);
-      setBrandDataCopy(newBrandDataCopy);
+  const addVoteBrandNameRecord = (selectedBrandName: IBrandData) => {
+    const isInitialSelection = lastActionClick === undefined;
+
+    const actualDate = new Date();
+
+    const newBrandNameVoteRecods = [...brandNameVoteRecods];
+
+    const stepIdleTime = isInitialSelection
+      ? (actualDate.getTime() - startDate?.getTime()) / 1000
+      : (actualDate.getTime() - lastActionClick?.getTime()) / 1000;
+
+    let preferedBrandName = null;
+    let toBrandName = null;
+
+    if (isInitialSelection) {
+      preferedBrandName = compareItems[0]?.name;
+      toBrandName = compareItems[1]?.name;
     } else {
-      const newCompare = [brandDataCopy[0], compareItems[1]];
-      const newBrandDataCopy = [...brandDataCopy];
+      const lastAddedBrandName =
+        newBrandNameVoteRecods[newBrandNameVoteRecods?.length - 1].selected;
 
-      newBrandDataCopy.shift();
+      preferedBrandName = compareItems?.find(
+        (e) => e?.name === lastAddedBrandName
+      )?.name;
 
-      setCompareItems(newCompare);
-      setBrandDataCopy(newBrandDataCopy);
+      toBrandName = compareItems?.find(
+        (e) => e?.name !== lastAddedBrandName
+      )?.name;
     }
 
-    console.log("newBrandDataCopy", brandDataCopy);
+    const newVoteRecord: IVoteBrandNameDataRecord = {
+      stepIdleTime,
+      preferedBrandName: preferedBrandName as string,
+      toBrandName: toBrandName as string,
+      selected: selectedBrandName.name,
+      isInitialSelection,
+    };
+
+    newBrandNameVoteRecods.push(newVoteRecord);
+
+    setBrandNameVoteRecods(newBrandNameVoteRecods);
+
+    setLastActionClick(actualDate);
+  };
+
+  const handleCompareSelect = (index: number) => {
+    if (!compareItems[0] || !compareItems[1]) return;
+
+    const upcomingBrandName = brandData[0];
+
+    const selectedBrandName = compareItems[index];
+
+    const newCompare =
+      index === 0
+        ? [selectedBrandName, upcomingBrandName]
+        : [upcomingBrandName, selectedBrandName];
+    const newBrandData = [...brandData];
+
+    newBrandData.shift();
+
+    addVoteBrandNameRecord(selectedBrandName as IBrandData);
+    setCompareItems(newCompare);
+    setBrandData(newBrandData);
+
+    if (upcomingBrandName === undefined) {
+      setWinner(compareItems[index] as IBrandData);
+      setEndDate(new Date());
+    }
   };
 
   return (
-    <>
-      {compareItems
-        ?.filter((e) => !!e)
-        .map((item, index) => {
-          const { name } = item!;
-          return (
-            <ButtonPill
-              key={`btn-pill-compare-${index}`}
-              text={name}
-              onClick={() => handleCompareSelect(index)}
-            />
-          );
-        })}
-    </>
+    <div>
+      <div className="compare-section-inner">
+        {compareItems
+          ?.filter((e) => !!e)
+          .map((item, index) => {
+            const { name } = item!;
+            return (
+              <ButtonPill
+                key={`btn-pill-compare-${index}`}
+                text={name}
+                onMouseOver={(e) => e.target.classList.add("active")}
+                onMouseOut={(e) => e.target.classList.remove("active")}
+                onClick={(e) => {
+                  handleCompareSelect(index);
+                  e.target.blur();
+                  e.preventDefault();
+                  e.stopPropagation();
+                  e.target.classList.remove("active");
+                }}
+              />
+            );
+          })}
+      </div>
+      <div className={`thanks-section ${!!endDate ? "visible" : ""}`}>
+        <div>
+          <p>
+            <span>Thank you</span> for taking the time to help us. Your
+            assistance has been invaluable and we are truly grateful for your
+            efforts. Your willingness to lend a helping hand has not only made a
+            difference in our current situation, but it has also inspired us to
+            pay it forward and help others in need.
+          </p>
+        </div>
+        <div className={`loading-info ${isSending ? "visible" : ""} `}>
+          <span className="loader"></span>
+        </div>
+
+        {/* <div className="winner-section">
+          <i>Sending data ...</i>
+        </div> */}
+      </div>
+    </div>
   );
 };
 
