@@ -13,6 +13,7 @@ type VoteRecordType = typeof VOTE_RECORD_BRAND_NAME_TYPE;
 
 interface IVoteBrandNameDataRecord {
   stepIdleTime: number;
+  clickTimePerfomance: Date;
   preferedBrandName: string;
   toBrandName: string;
   selected: string;
@@ -29,6 +30,8 @@ export type VoteRecordSingletonType = IVoteBrandNameRecord;
 export interface IVoteRecord {
   records: VoteRecordSingletonType;
   totalTime: number;
+  startTime: Date;
+  endTime: Date;
 }
 
 const shuffle = (array: Array<any>) => {
@@ -100,6 +103,8 @@ const BrandNameCompare = (props: IProps) => {
           data: brandNameVoteRecods,
         },
         totalTime: (endDate.getTime() - startDate.getTime()) / 1000,
+        startTime: startDate,
+        endTime: endDate,
       };
 
       saveBrandTracking(final)
@@ -140,6 +145,7 @@ const BrandNameCompare = (props: IProps) => {
 
     const newVoteRecord: IVoteBrandNameDataRecord = {
       stepIdleTime,
+      clickTimePerfomance: actualDate,
       preferedBrandName: preferedBrandName as string,
       toBrandName: toBrandName as string,
       selected: selectedBrandName.name,

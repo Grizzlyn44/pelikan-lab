@@ -56,10 +56,12 @@ const postHandler = async (
 ) => {
   const bodyJSON = JSON.parse(req.body);
 
-  const { records, totalTime } = bodyJSON;
+  const { records, startTime, endTime, totalTime } = bodyJSON;
 
   const brandTracking: IVoteRecord = {
     records,
+    startTime,
+    endTime,
     totalTime,
   };
 

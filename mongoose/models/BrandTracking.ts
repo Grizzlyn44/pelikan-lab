@@ -6,24 +6,11 @@ import { Schema, model, models, Model } from "mongoose";
 
 export interface IBrandTrackingDb extends IVoteRecord, Document {}
 
-// export interface ICard {
-//   title: string;
-//   coverUrl: string;
-//   author: string;
-//   owners: string[];
-//   quantity: number;
-//   price: number;
-// }
-
 const brandTrackingSchema: Schema = new Schema({
   records: Array<VoteRecordSingletonType>,
+  startTime: Date,
+  endTime: Date,
   totalTime: Number,
-  //   title: String,
-  //   coverUrl: String,
-  //   author: String,
-  //   owners: Array<String>,
-  //   quantity: Number,
-  //   price: Number,
 });
 
 const BrandTracking: Model<IBrandTrackingDb> =
