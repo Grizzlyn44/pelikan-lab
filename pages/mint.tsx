@@ -177,7 +177,6 @@ const Wallet = (props: IProps) => {
                         </defs>
                         <g
                           id="SvgjsG7557"
-                          featureey="symbolFeature-0"
                           transform="matrix(1.8535682234780595,0,0,1.8535682234780595,-42.67841117390297,-40.13761491113275)"
                           fill="url(#SvgjsLinearGradient7565)"
                         >
@@ -188,7 +187,6 @@ const Wallet = (props: IProps) => {
                         </g>
                         <g
                           id="SvgjsG7558"
-                          featurekey="textGroupContainer"
                           transform="matrix(1,0,0,1,405,0)"
                           fill="url(#SvgjsLinearGradient7569)"
                         >
@@ -209,7 +207,6 @@ const Wallet = (props: IProps) => {
                         </g>
                         <g
                           id="SvgjsG7559"
-                          featurekey="nameFeature-0"
                           transform="matrix(2.2486058581919406,0,0,2.2486058581919406,135.3016733990572,13.048034031024695)"
                           fill="url(#SvgjsLinearGradient7573)"
                         >
@@ -217,7 +214,6 @@ const Wallet = (props: IProps) => {
                         </g>
                         <g
                           id="SvgjsG7560"
-                          featurekey="sloganFeature-0"
                           transform="matrix(0.5636660725764793,0,0,0.5636660725764793,137.43633379303506,66.38459084238733)"
                           fill="url(#SvgjsLinearGradient7577)"
                         >

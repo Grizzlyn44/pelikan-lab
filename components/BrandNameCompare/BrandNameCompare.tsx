@@ -56,6 +56,8 @@ const BrandNameCompare = (props: IProps) => {
 
   const [winner, setWinner] = useState<IBrandData>();
 
+  const [isMounted, setIsMounted] = useState<boolean>(false);
+
   const [isSending, setIsSending] = useState<boolean>(false);
 
   const [startDate] = useState<Date>(new Date());
@@ -76,15 +78,18 @@ const BrandNameCompare = (props: IProps) => {
   >([]);
 
   useEffect(() => {
-    const newCompare = [brandData[0], brandData[1]];
-    const newBrandData = [...brandData];
+    if (!isMounted) {
+      const newCompare = [brandData[0], brandData[1]];
+      const newBrandData = [...brandData];
 
-    newBrandData.shift();
-    newBrandData.shift();
+      newBrandData.shift();
+      newBrandData.shift();
 
-    setCompareItems(newCompare);
-    setBrandData(newBrandData);
-  }, []);
+      setCompareItems(newCompare);
+      setBrandData(newBrandData);
+      setIsMounted(true);
+    }
+  }, [brandData, isMounted]);
 
   useEffect(() => {
     if (!!endDate) {
@@ -101,7 +106,7 @@ const BrandNameCompare = (props: IProps) => {
         .then((e) => setIsSending(false))
         .catch((e) => setIsSending(false));
     }
-  }, [endDate]);
+  }, [endDate, brandNameVoteRecods, startDate]);
 
   const addVoteBrandNameRecord = (selectedBrandName: IBrandData) => {
     const isInitialSelection = lastActionClick === undefined;

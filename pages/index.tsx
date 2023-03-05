@@ -104,7 +104,7 @@ export default function Home(props: PageWithError<IProps>) {
     return () => {
       io.disconnect();
     };
-  }, []);
+  }, [socket]);
 
   return (
     <>

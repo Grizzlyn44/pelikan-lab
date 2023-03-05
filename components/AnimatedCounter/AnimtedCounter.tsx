@@ -39,9 +39,11 @@ const AnimatedCounter = (props: IProps) => {
   };
 
   useEffect(() => {
+    if (!!counterInterval) return;
+
     setMounted(true);
     return () => clearInterval(counterInterval);
-  }, []);
+  }, [counterInterval]);
 
   useEffect(() => {
     if (mounted) {
