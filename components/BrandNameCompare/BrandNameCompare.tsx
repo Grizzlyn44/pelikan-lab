@@ -32,6 +32,7 @@ export interface IVoteRecord {
   totalTime: number;
   startTime: Date;
   endTime: Date;
+  userBrowserInfo: any;
 }
 
 const shuffle = (array: Array<any>) => {
@@ -97,6 +98,31 @@ const BrandNameCompare = (props: IProps) => {
   useEffect(() => {
     if (!!endDate) {
       setIsSending(true);
+
+      const {
+        appVersion,
+        language,
+        languages,
+        maxTouchPoints,
+        platform,
+        product,
+        userAgent,
+        userAgentData,
+        vendor,
+      } = window?.navigator as any;
+
+      const userBrowserInfo = {
+        appVersion,
+        language,
+        languages,
+        maxTouchPoints,
+        platform,
+        product,
+        userAgent,
+        userAgentData,
+        vendor,
+      };
+
       const final: IVoteRecord = {
         records: {
           type: VOTE_RECORD_BRAND_NAME_TYPE,
@@ -105,6 +131,7 @@ const BrandNameCompare = (props: IProps) => {
         totalTime: (endDate.getTime() - startDate.getTime()) / 1000,
         startTime: startDate,
         endTime: endDate,
+        userBrowserInfo,
       };
 
       saveBrandTracking(final)

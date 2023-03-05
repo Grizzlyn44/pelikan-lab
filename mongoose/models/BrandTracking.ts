@@ -11,6 +11,7 @@ const brandTrackingSchema: Schema = new Schema({
   startTime: Date,
   endTime: Date,
   totalTime: Number,
+  userBrowserInfo: Object,
 });
 
 const BrandTracking: Model<IBrandTrackingDb> =
