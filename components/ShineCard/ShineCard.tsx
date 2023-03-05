@@ -54,7 +54,7 @@ const ShineCard = (props: IProps) => {
 
   const onMouseMoveHandler = (e: any) => {
     var pos = [e.nativeEvent.offsetX, e.nativeEvent.offsetY];
-    e.preventDefault();
+    // e.preventDefault();
     if (e.type === "touchmove") {
       pos = [e.touches[0].clientX, e.touches[0].clientY];
     }

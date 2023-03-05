@@ -212,6 +212,46 @@ a {
   color: #ffffff;
   transition: all 0.15s ease-in-out;
   transform: scale(1);
+  user-select: none;
+
+  &.selected {
+    animation: selectedBtnPill 0.3s ease-out forwards;
+  }
+
+  &:hover {
+    @media (hover: hover) {
+      border: 1px solid #e86647;
+      cursor: pointer;
+      transform: scale(1.2);
+    }
+  }
+}
+
+@keyframes selectedBtnPill {
+  0% {
+    transform: scale(1.2);
+    border-color: #fff;
+  }
+  10% {
+    border-color: #e86647;
+  }
+  // 20% {
+  //   transform: scale(1.05);
+  // }
+  40% {
+    transform: scale(1.4);
+  }
+  // 80% {
+  //   transform: scale(1.2);
+  // }
+  100% {
+    @media (hover: hover) {
+      transform: scale(1.2);
+    }
+    @media (hover: none) {
+      transform: scale(1);
+    }
+  }
 }
 
 .btn-pill.active {
@@ -246,6 +286,8 @@ a {
   }
   .compare-section-inner {
     margin-bottom: 5rem;
+    flex-direction: column;
+    gap: 2rem 0;
   }
 }
 
@@ -352,4 +394,13 @@ $loaderHeight: $loaderWidth;
   font-size: 0.75rem;
   color: rgba(#e86647, 0.5);
   text-align: center;
+}
+
+.stepper {
+  text-align: center;
+  width: 100%;
+  margin-top: 3rem;
+  color: #3e3e3e;
+  font-size: 0.75rem;
+  font-weight: 600;
 }

@@ -119,7 +119,7 @@ export default function Home(props: PageWithError<IProps>) {
         <FluidContainer className="content">
           <h1 className="title">Pelikan LAB</h1>
           <p className="description">
-            Definitely not <code className="code">NFT</code>
+            Definitely not <code className="code">NFT</code> (Coming soon.)
           </p>
 
           <div className="cards-grid">{generateCards()}</div>

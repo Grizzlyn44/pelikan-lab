@@ -198,15 +198,24 @@ const BrandNameCompare = (props: IProps) => {
                 onMouseOver={(e) => e.target.classList.add("active")}
                 onMouseOut={(e) => e.target.classList.remove("active")}
                 onClick={(e) => {
+                  e.target.classList.add("selected");
+                  setTimeout(() => {
+                    e.target.classList.remove("selected");
+                  }, 300);
                   handleCompareSelect(index);
-                  e.target.blur();
-                  e.preventDefault();
-                  e.stopPropagation();
+                  // e.target.blur();
+                  // e.preventDefault();
+                  // e.stopPropagation();
                   e.target.classList.remove("active");
                 }}
               />
             );
           })}
+      </div>
+      <div className="stepper">
+        {!(compareItems[0] === undefined || compareItems[1] === undefined)
+          ? `${brandData.length + 1}/${props.brandData.length - 1}`
+          : null}
       </div>
       <div className={`thanks-section ${!!endDate ? "visible" : ""}`}>
         <div>
