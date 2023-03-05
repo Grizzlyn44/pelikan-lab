@@ -112,7 +112,7 @@ const Header = (props: IProps) => {
           </Link>
         </div>
         <div className="h-r">
-          {isLoggedIn ? loggedInContent : loggedOutContent}
+          {/* {isLoggedIn ? loggedInContent : loggedOutContent} */}
         </div>
       </FluidContainer>
     </header>

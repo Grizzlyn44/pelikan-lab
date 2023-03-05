@@ -4,3 +4,5 @@
 const baseUrl = process?.env?.NEXT_PUBLIC_BASE_URL || "";
 
 export const getMyWalletUrl = () => `${baseUrl}/api/wallet`;
+
+export const getBrandTrackingUrl = () => `${baseUrl}/api/brand`;
