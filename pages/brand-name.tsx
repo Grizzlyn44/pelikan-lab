@@ -7,6 +7,7 @@ export interface IBrandData {
 const brandData: Array<IBrandData> = [
   { name: "LIVEE" },
   { name: "PLAY.BACK" },
+  { name: "PLAYBACK" },
   { name: "NOISE" },
   { name: "SHOW TIME" },
   { name: "LIVE ROOM" },
@@ -27,7 +28,6 @@ const brandData: Array<IBrandData> = [
   { name: "BROADSTAGE" },
   { name: "LIVESTAGE" },
   { name: "NOISE ROOM" },
-  { name: "LIVE STAGE" },
 ];
 
 export default function BrandNameComparer() {
